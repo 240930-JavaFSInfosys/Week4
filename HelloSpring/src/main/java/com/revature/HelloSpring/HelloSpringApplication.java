@@ -30,6 +30,7 @@ public class HelloSpringApplication {
 		System.out.println(p);
 
 		//WOW! We have a Pizza object with a Topping object DEPENDENCY INJECTED for us!
+			//We have a whole Topping object instead of a null value right at instantiation
 		//It was instantiated and set for us by Spring, since we made Topping a dependency of Pizza
 
 		//TODO: give some values to these after talking notes and comments

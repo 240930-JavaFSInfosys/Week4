@@ -1,9 +1,15 @@
 package com.revature.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component //again, a stereotype annotations, we want this class to be a bean
 public class Pizza {
 
     private int pizza_id;
     private String cheeseType;
+
+    //@Autowired //Field Injection - BAD! Breaks Encapsulation (but it still works)
     private Topping topping; //Topping is a dependency of Pizza!
 
     //boilerplate-----------------------
@@ -13,6 +19,12 @@ public class Pizza {
     public Pizza(int pizza_id, String cheeseType, Topping topping) {
         this.pizza_id = pizza_id;
         this.cheeseType = cheeseType;
+        this.topping = topping;
+    }
+
+    //For construction injection (which I prefer), we need a constructor for dependencies
+    @Autowired //Constructor Injection - BEST PRACTICE
+    public Pizza(Topping topping) {
         this.topping = topping;
     }
 
@@ -36,6 +48,8 @@ public class Pizza {
         return topping;
     }
 
+    //@Autowired //Setter Injection - Usually used if there are optional dependencies
+    //Fun fact: Setter Injection is the default when we use XML-based bean configuration
     public void setTopping(Topping topping) {
         this.topping = topping;
     }

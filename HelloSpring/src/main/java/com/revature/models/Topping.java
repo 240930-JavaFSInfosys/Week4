@@ -1,6 +1,9 @@
 package com.revature.models;
 
-public class Topping extends Object {
+import org.springframework.stereotype.Component;
+
+@Component //1 of the 4 stereotype annotations, which all make a Class a Bean
+public class Topping {
 
     private int topping_id;
     private String topping_name;

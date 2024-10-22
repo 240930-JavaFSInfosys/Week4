@@ -11,16 +11,16 @@ public class BeanConfigClassExample {
     //Just Class-based instead of XML-based
 
     //We would specify our beans here with the @Bean annotation
-    @Bean
-    public Topping topping(){
-        return new Topping(1, "Pepperoni");
-    }
-
-    //Pizza has Topping as a dependency
-    @Bean
-    public Pizza pizza(){
-        return new Pizza(1, "Mozzarella", topping());
-    }
+//    @Bean
+//    public Topping topping(){
+//        return new Topping(1, "Pepperoni");
+//    }
+//
+//    //Pizza has Topping as a dependency
+//    @Bean
+//    public Pizza pizza(){
+//        return new Pizza(1, "Mozzarella", topping());
+//    }
 
     //ETC..
 

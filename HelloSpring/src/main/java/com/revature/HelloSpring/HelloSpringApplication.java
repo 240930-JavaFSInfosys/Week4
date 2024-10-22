@@ -15,8 +15,10 @@ public class HelloSpringApplication {
 
 		//Create an ApplicationContext object based off our applicationContext.xml file
 		//This object will serve as our Spring IoC Container, and manage our beans + dependency injection
+//		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext ac =
+				new ClassPathXmlApplicationContext("annotationDrivenApplicationContext.xml");
 
 		//We can now use our ApplicationContext (our Spring Container) to do a bunch of stuff with beans
 		String[] beanNames = ac.getBeanDefinitionNames();

@@ -1,6 +1,6 @@
 package com.revature.models;
 
-public class Topping {
+public class Topping extends Object {
 
     private int topping_id;
     private String topping_name;

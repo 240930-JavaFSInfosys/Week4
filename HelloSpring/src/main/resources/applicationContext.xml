@@ -11,17 +11,23 @@
 
     <!-- We need the <beans> tag and its configurations in order for this xml to be used for Spring -->
 
-    <!--TODO: bean notes here-->
+    <!--The <bean> tag is used to register and wire Spring Beans-->
+    <!--The name attribute can be whatever you want.-->
+    <!--The class attribute is the path to the Class you want to register as a Bean-->
 
     <!--Topping Bean-->
-    <bean name="topping" class="com.revature.models.Topping"> </bean>
+    <bean name="topping" class="com.revature.models.Topping">
+        <property name="topping_name" value="no topping"></property>
+        <!--we can set default values like this^ or just do it in the no-args constructor-->
+    </bean>
 
     <!--Pizza Bean-->
     <bean name="pizza" class="com.revature.models.Pizza">
 
-        <!--TODO: Dependency notes here-->
-
+        <!--The Pizza Class has Topping as a dependency-->
+        <!--We need to wire the Beans together so we can achieve Dependency Injection-->
         <property name="topping" ref="topping"></property>
+        <!--name is our choice, the name of the property. ref is the name of the bean we're wiring-->
     </bean>
 
 </beans>

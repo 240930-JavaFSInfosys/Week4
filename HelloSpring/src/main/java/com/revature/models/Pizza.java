@@ -4,7 +4,7 @@ public class Pizza {
 
     private int pizza_id;
     private String cheeseType;
-    private Topping topping;
+    private Topping topping; //Topping is a dependency of Pizza!
 
     //boilerplate-----------------------
     public Pizza() {

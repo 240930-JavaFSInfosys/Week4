@@ -13,11 +13,16 @@ public class HelloSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HelloSpringApplication.class, args);
 
-
-		//TODO: talk about our ApplicationContext object
+		//Create an ApplicationContext object based off our applicationContext.xml file
+		//This object will serve as our Spring IoC Container, and manage our beans + dependency injection
 
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 
+		//We can now use our ApplicationContext (our Spring Container) to do a bunch of stuff with beans
+		String[] beanNames = ac.getBeanDefinitionNames();
+		for(String bean : beanNames){
+			System.out.println(bean);
+		}
 
 		//Ask for a Topping bean and print it out
 		Topping t = ac.getBean(Topping.class);
@@ -33,7 +38,12 @@ public class HelloSpringApplication {
 			//We have a whole Topping object instead of a null value right at instantiation
 		//It was instantiated and set for us by Spring, since we made Topping a dependency of Pizza
 
-		//TODO: give some values to these after talking notes and comments
+		//Give some values to the Pizza bean
+		p.setPizza_id(1);
+		p.setCheeseType("Mozzarella");
+		p.getTopping().setTopping_id(1);
+		p.getTopping().setTopping_name("Pepperoni");
+		System.out.println(p); //Print it out again
 
 	}
 

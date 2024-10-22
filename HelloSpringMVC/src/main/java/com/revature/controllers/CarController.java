@@ -1,10 +1,9 @@
 package com.revature.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 //@RestController is a combination of @Controller and @ResponseBody
 //@Controller is a stereotype annotation - makes a class a Bean in the Spring Container
@@ -38,9 +37,31 @@ public class CarController {
 
         //If the user send in a number > 0, send them back their car and a 200
         return ResponseEntity.ok("Returned car number " + id );
-
         //^using shorthand for ResponseEntity.status(200).body("blah blah")
+    }
+
+    //This method will take in car data and insert it into our fake database
+    @PostMapping //This annotation takes in any HTTP POST Requests ending in /cars
+    public ResponseEntity<String> insertCar(@RequestBody String car){
+
+        //TODO: make sure the car is valid
+        //NOTE: no need to handle input datatype mismatches since we already have an ExceptionHandler below
+
+        //If the car is valid, send a 201 (Created) status code
+        return ResponseEntity.status(201).body("Added car: " + car);
 
     }
+
+    //TODO: see what happens if I have another POST request with the same path
+
+
+
+    //This is an exception handler for ANY MethodArgumentTypeMismatchException. Whenever one gets thrown, this runs instead
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<String> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        return ResponseEntity.status(400).body("Invalid type: " + ex.getMessage());
+    }
+
+    //any other exception handlers can be added here as well
 
 }

@@ -47,6 +47,21 @@ public class HelloSpringApplication {
 		p.getTopping().setTopping_name("Pepperoni");
 		System.out.println(p); //Print it out again
 
+		System.out.println("=================================(Bean Scopes)");
+
+		//Let's try to get a new Pizza and print it out
+		Pizza p2 = ac.getBean(Pizza.class);
+		System.out.println(p2);
+
+		//Beans by default are SINGLETONS (they're singleton scoped)
+		//If a class is a singleton, that means there can only be one instance of it at a time
+		//So, p and p2 are the same object, with the same values.
+
+		//We can change the bean scope to be "prototype" instead of "singleton"
+		//This will let us have multiple instances of the Pizza bean
+
+		//Notice the topping is still the same, we never changed it off Singleton scope
+
 	}
 
 }

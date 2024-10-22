@@ -1,9 +1,11 @@
 package com.revature.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component //again, a stereotype annotations, we want this class to be a bean
+@Scope("prototype") //Changing the scope from singleton to prototype so we can have multiple pizza objects
 public class Pizza {
 
     private int pizza_id;

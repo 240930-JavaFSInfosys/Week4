@@ -52,7 +52,15 @@ public class CarController {
 
     }
 
-    //TODO: see what happens if I have another POST request with the same path
+    //This method will take in car data to send to some other user
+    @PostMapping("/toUser")
+    public ResponseEntity<String> sendCar(@RequestBody String car){
+
+        //TODO: make sure the car valid checks
+
+        return ResponseEntity.ok("Sent car: " + car + " to the customer");
+
+    }
 
 
 
